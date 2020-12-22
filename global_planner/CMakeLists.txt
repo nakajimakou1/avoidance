@@ -24,6 +24,10 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(PCL 1.7 REQUIRED)
 find_package(octomap REQUIRED)
 
+# 2020.12.21 add
+set (octomap_msgs_DIR /home/nakajima/catkin_ws/src/octomap_msgs)
+set (octomap_msgs_INCLUDE_DIRS /home/nakajima/catkin_ws/src/octomap_msgs/include)
+message("[*] global_planner:octomap_msgs :: ${octomap_msgs_DIR} : ${octomap_msgs_INCLUDE_DIRS}")  
 if(DISABLE_SIMULATION)
   message(STATUS "Building avoidance without Gazebo Simulation")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDISABLE_SIMULATION")
@@ -145,6 +149,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
   ${OCTOMAP_INCLUDE_DIRS}
+  ${octomap_msgs_INCLUDE_DIRS}
   ${YAML_CPP_INCLUDE_DIR}
 )
 link_libraries(${OCTOMAP_LIBRARIES})
